@@ -1,7 +1,8 @@
-use std::sync::Arc;
 use domain::use_case::TaskUseCase;
+use input_adapter::http_api;
 use input_adapter::http_api::router::get_router;
 use output_adapter::task_command_mock::TaskCommandMock;
+use std::sync::Arc;
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
@@ -18,13 +19,7 @@ async fn main() -> Result<(), anyhow::Error> {
     let task_command = TaskCommandMock {};
     let use_case = TaskUseCase::new(Arc::new(task_command));
 
-    let router = get_router(Arc::new(use_case));
-    let addr = std::net::SocketAddr::from(([0, 0, 0, 0], 3000));
-    let listener = tokio::net::TcpListener::bind(addr).await?;
-
-    tracing::info!("Listening on: {}", addr);
-
-    axum::serve(listener, router).await?;
+    http_api::server::run(Arc::new(use_case)).await?;
 
     Ok(())
 }

@@ -15,9 +15,7 @@ where
     A: task_command::TaskCommand,
 {
     pub fn new(task_command: Arc<A>) -> Self {
-        Self {
-            task_command,
-        }
+        Self { task_command }
     }
 }
 

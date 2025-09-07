@@ -332,6 +332,8 @@ dependencies = [
  "axum",
  "domain",
  "serde",
+ "tokio",
+ "tracing",
 ]
 
 [[package]]
@@ -788,13 +790,11 @@ name = "todo_list"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "axum",
  "domain",
  "dotenvy",
  "input_adapter",
  "output_adapter",
  "tokio",
- "tracing",
  "tracing-subscriber",
 ]
 
