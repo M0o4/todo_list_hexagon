@@ -332,7 +332,6 @@ dependencies = [
  "axum",
  "domain",
  "serde",
- "tracing-subscriber",
 ]
 
 [[package]]
