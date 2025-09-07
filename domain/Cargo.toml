@@ -1,0 +1,10 @@
+[package]
+name = "domain"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = { version = "1.0.219", features = ["derive"] }
+ulid = { version = "1.2.1", features = ["serde"] }
+time = { version = "0.3.43", features = ["formatting", "macros", "parsing", "serde"] }
+anyhow = "1.0.99"

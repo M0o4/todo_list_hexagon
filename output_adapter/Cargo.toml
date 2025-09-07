@@ -1,0 +1,8 @@
+[package]
+name = "output_adapter"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+domain = { path = "../domain" }
+ulid = { version = "1.2.1", features = ["serde"] }

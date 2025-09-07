@@ -1,0 +1,3 @@
+[workspace]
+resolver = "3"
+members = [ "domain", "input_adapter", "output_adapter","todo_list"]

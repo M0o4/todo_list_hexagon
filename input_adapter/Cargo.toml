@@ -1,0 +1,11 @@
+[package]
+name = "input_adapter"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+domain = { path = "../domain" }
+axum = { version = "0.8.4", features = ["macros"] }
+serde = { version = "1.0.219", features = ["derive"] }
+anyhow = "1.0.99"
+tracing-subscriber = { version = "0.3.20", features = ["json", "env-filter"] }
