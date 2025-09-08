@@ -9,3 +9,14 @@ pub struct Task {
     completed: bool,
     create_at: Datetime,
 }
+
+impl Task {
+    pub fn new(task_id: TaskId, text: String, completed: bool, create_at: Datetime) -> Self {
+        Self {
+            text,
+            task_id,
+            completed,
+            create_at,
+        }
+    }
+}
