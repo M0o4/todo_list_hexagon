@@ -19,3 +19,9 @@ impl From<OutputPortError> for AppError {
         Self::OutputPort(e)
     }
 }
+
+impl From<sqlx::Error> for OutputPortError {
+    fn from(e: sqlx::Error) -> Self {
+        Self::Other(e.into())
+    }
+}

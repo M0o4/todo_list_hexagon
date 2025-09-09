@@ -334,6 +334,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "serde",
+ "sqlx",
  "time",
  "ulid",
 ]
@@ -830,6 +831,7 @@ dependencies = [
  "serde",
  "tokio",
  "tracing",
+ "ulid",
 ]
 
 [[package]]
@@ -1128,6 +1130,7 @@ dependencies = [
 name = "output_adapter"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "domain",
  "sqlx",
  "ulid",

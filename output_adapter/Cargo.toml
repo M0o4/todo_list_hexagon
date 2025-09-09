@@ -7,3 +7,4 @@ edition = "2024"
 domain = { path = "../domain" }
 ulid = { version = "1.2.1", features = ["serde"] }
 sqlx = { version = "0.8.6",features = ["runtime-tokio", "tls-native-tls", "postgres", "derive", "uuid", "macros", "time", "json"]}
+anyhow = "1.0.99"

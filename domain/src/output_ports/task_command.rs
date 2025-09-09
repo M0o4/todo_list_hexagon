@@ -3,7 +3,8 @@ use crate::models::task::TaskId;
 use crate::models::task_command;
 
 pub trait TaskCommand: Send + Sync + Clone + 'static {
-    fn create(&self, text: &str) -> impl Future<Output = Result<TaskId, OutputPortError>> + Send;
+    fn create(&self, content: &str)
+    -> impl Future<Output = Result<TaskId, OutputPortError>> + Send;
 
     fn update(
         &self,

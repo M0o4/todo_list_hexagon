@@ -34,8 +34,8 @@ where
     A: task_command::TaskCommand,
     B: task_query::TaskQuery,
 {
-    async fn create(&self, text: String) -> Result<TaskId, AppError> {
-        let x = self.task_command.create(&text).await?;
+    async fn create(&self, content: String) -> Result<TaskId, AppError> {
+        let x = self.task_command.create(&content).await?;
 
         Ok(x)
     }

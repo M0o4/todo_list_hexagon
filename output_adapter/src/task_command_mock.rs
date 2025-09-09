@@ -7,7 +7,7 @@ use domain::output_ports::task_command::TaskCommand;
 pub struct TaskCommandMock {}
 
 impl TaskCommand for TaskCommandMock {
-    async fn create(&self, text: &str) -> Result<TaskId, OutputPortError> {
+    async fn create(&self, content: &str) -> Result<TaskId, OutputPortError> {
         Ok(TaskId(ulid::Ulid::new()))
     }
 
