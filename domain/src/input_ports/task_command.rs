@@ -7,4 +7,6 @@ pub trait TaskCommand: Send + Sync + Clone + 'static {
 
     fn update(&self, task: task_command::Task)
     -> impl Future<Output = Result<(), AppError>> + Send;
+    
+    fn delete(&self, task_id: TaskId) -> impl Future<Output = Result<(), AppError>> + Send;
 }

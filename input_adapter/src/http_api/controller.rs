@@ -45,6 +45,18 @@ where
     Ok(StatusCode::OK)
 }
 
+pub async fn delete<I>(
+    State(use_case): State<Arc<I>>,
+    Path(task_id): Path<Ulid>,
+) -> Result<StatusCode, ApiError>
+where
+    I: TaskCommand,
+{
+    use_case.delete(TaskId(task_id)).await?;
+
+    Ok(StatusCode::OK)
+}
+
 pub async fn list<I>(
     State(use_case): State<Arc<I>>,
 ) -> Result<(StatusCode, Json<Vec<ListOutput>>), ApiError>

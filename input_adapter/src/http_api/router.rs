@@ -1,6 +1,6 @@
 use crate::http_api::controller;
 use axum::Router;
-use axum::routing::{get, post, put};
+use axum::routing::{delete, get, post, put};
 use domain::input_ports::task_command::TaskCommand;
 use domain::input_ports::task_query::TaskQuery;
 use std::sync::Arc;
@@ -14,6 +14,7 @@ where
         .route("/task/list/", get(controller::list))
         .route("/task/update/{task_id}", put(controller::update))
         .route("/task/{task_id}", get(controller::get_one))
+        .route("/task/delete/{task_id}", delete(controller::delete))
         .with_state(ctx);
 
     let nest_router = Router::new().nest("/api/v1", router);

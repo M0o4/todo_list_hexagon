@@ -54,4 +54,14 @@ impl TaskCommand for SqlxTaskCommand {
 
         Ok(())
     }
+
+    async fn delete(&self, task_id: &TaskId) -> Result<(), OutputPortError> {
+        let id_bytes = task_id.0.to_bytes();
+
+        sqlx::query!(r#"DELETE FROM tasks WHERE task_id = $1"#, &id_bytes[..])
+            .execute(&self.pool)
+            .await?;
+
+        Ok(())
+    }
 }

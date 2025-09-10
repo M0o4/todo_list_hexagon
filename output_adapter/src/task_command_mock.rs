@@ -14,4 +14,8 @@ impl TaskCommand for TaskCommandMock {
     async fn update(&self, task: &Task) -> Result<(), OutputPortError> {
         Ok(())
     }
+
+    async fn delete(&self, task_id: &TaskId) -> Result<(), OutputPortError> {
+        Ok(())
+    }
 }

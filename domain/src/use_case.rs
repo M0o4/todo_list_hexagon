@@ -45,6 +45,12 @@ where
 
         Ok(())
     }
+
+    async fn delete(&self, task_id: TaskId) -> Result<(), AppError> {
+        self.task_command.delete(&task_id).await?;
+        
+        Ok(())
+    }
 }
 
 impl<A, B> TaskQuery for TaskUseCase<A, B>
