@@ -48,7 +48,7 @@ where
 
     async fn delete(&self, task_id: TaskId) -> Result<(), AppError> {
         self.task_command.delete(&task_id).await?;
-        
+
         Ok(())
     }
 }
