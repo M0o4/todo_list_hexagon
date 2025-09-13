@@ -1,0 +1,11 @@
+type: object
+required: [content, completed]
+properties:
+  content:
+    type: string
+    description: Task text
+    example: "Buy groceries and cook dinner"
+  completed:
+    type: boolean
+    description: Task status
+    example: true

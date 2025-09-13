@@ -23,7 +23,7 @@ where
 {
     let x = use_case.create(input.content).await?;
 
-    Ok((StatusCode::OK, Json(CreateOutput { id: x })))
+    Ok((StatusCode::CREATED, Json(CreateOutput { id: x })))
 }
 
 pub async fn update<I>(

@@ -4,6 +4,7 @@ use axum::routing::{delete, get, post, put};
 use domain::input_ports::task_command::TaskCommand;
 use domain::input_ports::task_query::TaskQuery;
 use std::sync::Arc;
+use swagger::swagger_router;
 
 pub fn get_router<I>(ctx: Arc<I>) -> Router
 where
@@ -17,7 +18,7 @@ where
         .route("/task/delete/{task_id}", delete(controller::delete))
         .with_state(ctx);
 
-    let nest_router = Router::new().nest("/api/v1", router);
+    let nest_router = swagger_router().nest("/api/v1", router);
 
     nest_router
 }

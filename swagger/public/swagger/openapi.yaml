@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Todo List API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api/v1
+
+tags:
+  - name: Tasks
+    description: Tasks endpoints
+
+paths:
+  /task/create/:
+    post:
+      summary: Create a task
+      description: Returns a task id.
+      operationId: createTask
+      tags: [ Tasks ]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/CreateInput.yaml"
+      responses:
+        "201":
+          description: Task Created
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/CreateOutput.yaml"
+  /task/list/:
+    get:
+      summary: List tasks
+      description: Returns an array of tasks
+      operationId: listTasks
+      tags: [ Tasks ]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "./schemas/ListOutput.yaml"
+  /task/update/{task_id}:
+    put:
+      summary: Update a task
+      description: Update task content and status
+      operationId: updateTask
+      tags: [ Tasks ]
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Task identifier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/UpdateInput.yaml"
+      responses:
+        "204":
+          description: Task updated successfully
+        "400":
+          description: Invalid input
+        "404":
+          description: Task not found
+  /task/{task_id}:
+    get:
+      summary: Get a task
+      description: Returns a single task by ULID
+      operationId: getTask
+      tags: [ Tasks ]
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Task identifier (ULID)
+            example: "01J7Z3Z7QZJ9T9E5S7K4Z4Y1Q9"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/GetOneOutput.yaml"
+        "404":
+          description: Task not found
+  /task/delete/{task_id}:
+    delete:
+      summary: Delete a task
+      description: Deletes a task by ULID
+      operationId: deleteTask
+      tags: [ Tasks ]
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          schema:
+            type: string
+            description: Task identifier (ULID)
+            example: "01J7Z3Z7QZJ9T9E5S7K4Z4Y1Q9"
+      responses:
+        "204":
+          description: Task deleted successfully

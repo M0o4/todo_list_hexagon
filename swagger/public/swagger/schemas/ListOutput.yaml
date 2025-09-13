@@ -1,0 +1,20 @@
+type: object
+required: [id, content, completed, created_at]
+properties:
+  id:
+    type: string
+    description: Unique task identifier
+    example: "01J7Z3Z7QZJ9T9E5S7K4Z4Y1Q9"
+  content:
+    type: string
+    description: Task text
+    example: "Buy groceries"
+  completed:
+    type: boolean
+    description: Task status
+    example: false
+  created_at:
+    type: string
+    format: date-time
+    description: Task creation timestamp
+    example: "2025-09-13"

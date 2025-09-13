@@ -1,0 +1,7 @@
+type: object
+required: [id]
+properties:
+  id:
+    type: string
+    description: Task id
+    example: "01J7Z3Z7QZJ9T9E5S7K4Z4Y1Q9"
