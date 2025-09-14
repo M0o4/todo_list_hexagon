@@ -2,7 +2,7 @@ pub enum AppError {
     InputContract(anyhow::Error),
     Authorization(String),
     Checkout(String),
-    DomainInvariant(String), // должен быть свой тип
+    DomainInvariant(String),
     OutputPort(OutputPortError),
 }
 

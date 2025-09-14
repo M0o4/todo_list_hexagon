@@ -9,7 +9,6 @@ set -euo pipefail
 : "${DB_WAIT_INTERVAL:=1}"       # seconds between checks
 
 echo "[entrypoint] waiting for database readiness..."
-# pg_isready понимает DATABASE_URL целиком
 deadline=$(( $(date +%s) + DB_WAIT_TIMEOUT ))
 until pg_isready -d "$DATABASE_URL" -q; do
   if [ "$(date +%s)" -ge "$deadline" ]; then
@@ -22,7 +21,6 @@ echo "[entrypoint] database is ready"
 
 if [ "$RUN_MIGRATIONS" = "true" ]; then
   echo "[entrypoint] running migrations..."
-  # sqlx возьмёт DATABASE_URL из окружения; cwd = /app, миграции в /app/migrations
   sqlx migrate run
 else
   echo "[entrypoint] skipping migrations (RUN_MIGRATIONS=$RUN_MIGRATIONS)"
