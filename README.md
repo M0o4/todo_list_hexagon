@@ -38,6 +38,8 @@ todo_list/
 └── README.md
 ```
 
+---
+
 ## 🚀 Running locally
 
 ### Requirements
@@ -71,6 +73,8 @@ cargo run
 Swagger UI: http://localhost:3000/docs/
 ```
 
+---
+
 ## 🐳 Running with Docker Compose
 
 ### Requirements
@@ -88,6 +92,8 @@ docker compose logs -f app
 # Access:
 Swagger UI: http://localhost:3000/docs/
 ```
+
+---
 
 ## ✅ Useful commands
 ```text
