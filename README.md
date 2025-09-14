@@ -25,7 +25,7 @@ The project is structured as a **Rust workspace** and follows the **Hexagonal Ar
 
 ```text
 todo_list/
-├── .sqlx              # query metadata for offline usage
+├── .sqlx/             # query metadata for offline usage
 ├── domain/            # core domain (use cases, entities)
 ├── input_adapter/     # HTTP API (Axum handlers)
 ├── output_adapter/    # SQLx queries/commands
