@@ -837,6 +837,7 @@ dependencies = [
  "serde",
  "swagger",
  "tokio",
+ "tower-http",
  "tracing",
  "ulid",
 ]
@@ -1976,6 +1977,7 @@ dependencies = [
  "output_adapter",
  "sqlx",
  "tokio",
+ "tracing",
  "tracing-subscriber",
 ]
 

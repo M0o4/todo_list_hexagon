@@ -39,7 +39,7 @@ window.onload = function() {
       if (titleElement) {
         titleElement.innerHTML = `
               <div class="custom-title">
-                <span>Telesync</span>
+                <span>TodoList</span>
                 <img src="https://www.gifcen.com/wp-content/uploads/2022/06/anime-gif-4.gif" alt="Logo GIF" width="32px" height="32px">
                 <span><small><pre class="version"> 0.0.1 </pre></small><small class="version-stamp"><pre class="version">OAS 3.0</pre></small></span>
               </div>

@@ -5,6 +5,7 @@ use output_adapter::sqlx::sqlx_task_query::SqlxTaskQuery;
 use sqlx::postgres::PgPoolOptions;
 use std::env;
 use std::sync::Arc;
+use tracing::info;
 
 #[tokio::main]
 async fn main() -> Result<(), anyhow::Error> {
@@ -12,11 +13,16 @@ async fn main() -> Result<(), anyhow::Error> {
 
     tracing_subscriber::fmt::fmt()
         .json()
+        .with_ansi(false)
         .with_current_span(false)
-        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
+        .with_env_filter(
+            tracing_subscriber::EnvFilter::from_default_env().add_directive("info".parse()?),
+        )
         .with_file(true)
         .with_line_number(true)
         .init();
+
+    info!("starting… preparing DB pool");
 
     let pool = PgPoolOptions::new()
         .max_connections(5)

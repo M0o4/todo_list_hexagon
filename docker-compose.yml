@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:17
+    container_name: todo_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d app_db || exit 1"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BIN_NAME: todo_list
+    container_name: todo_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@db:5432/app_db
+      RUST_LOG: debug,axum=debug,tower_http=debug,sqlx=warn,todo_list=debug,input_adapter=debug,output_adapter=debug,domain=debug
+      RUN_MIGRATIONS: "true"
+      DB_WAIT_TIMEOUT: "60"
+      SWAGGER_ASSETS_DIR: /app/public/swagger
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
